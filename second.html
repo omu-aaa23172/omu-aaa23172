@@ -12,10 +12,13 @@
     <p>氏名：藤岡　千明 (AAA23172)</p>
 
     <h2>BMI指標計算</h2>
-        <p><label>体重(kg)：<input id="weight" name="weight" type="number" step="any"></label></p>
-        <p><label>身長(cm)：<input id="height" name="height" type="number" step="any"></label></p>
-        <p><label>BMI：<output id="bmi" name="bmi"></output></label></p>
-        <p><label>状態：<output id="status" name="status"></output></label></p>
+        <form oninput="calculateBmi()">
+            <p><label>体重(kg)：<input id="weight" name="weight" type="number" step="any"></label></p>
+            <p><label>身長(cm)：<input id="height" name="height" type="number" step="any"></label></p>
+            <p><label>BMI：<output id="bmi" name="bmi"></output></label></p>
+        
+            <p><label>状態：<output id="status" name="status"></output></label></p>
+        </form>
         
         <script>
         // 4. 計算と判定の処理をすべてこの関数にまとめる
