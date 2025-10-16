@@ -11,6 +11,13 @@
     
     <p>氏名：藤岡　千明 (AAA23172)</p>
 
+    <h2>BMI指標計算</h2>
+        <form oninput="bmi.value = Math.round(Number(weight.value) / Math.pow(Number(height.value)/100, 2) * 10) / 10">
+        <p><label>体重(kg)：<input name="weight" type="number" step="any"></label></p>
+        <p><label>身長(cm)：<input name="height" type="number" step="any"></label></p>
+        <p><label>BMI：<output name="bmi"></output></label></p>
+    </form>
+
     <hr>
 
     <h2>おすすめの旅行先：京都</h2>
