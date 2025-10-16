@@ -21,23 +21,23 @@
         </form>
         
         <script>
-        // 4. 計算と判定の処理をすべてこの関数にまとめる
+        
         function calculateBmi() {
-            // HTMLから各要素を取得
+            
             const weight = document.getElementById('weight').value;
             const height = document.getElementById('height').value;
             const bmiOutput = document.getElementById('bmi');
             const statusOutput = document.getElementById('status');
 
-            // 体重と身長の両方に有効な数値が入力された場合のみ計算を実行
+            
             if (weight > 0 && height > 0) {
-                // BMIを計算
+                
                 const bmiValue = weight / Math.pow(height / 100, 2);
                 
-                // 計算したBMIを小数点第一位に丸めて表示
+                
                 bmiOutput.value = Math.round(bmiValue * 10) / 10;
                 
-                // 計算結果をもとに状態を判定
+                
                 let status = "";
                 if (bmiOutput.value < 18.5) {
                     status = "低体重";
@@ -47,16 +47,14 @@
                     status = "肥満";
                 }
                 
-                // 判定結果を表示
+                
                 statusOutput.value = status;
             } else {
-                // 入力が不十分な場合は、表示を空にする
                 bmiOutput.value = "";
                 statusOutput.value = "";
             }
         }
 
-        // ページ読み込み時に一度関数を呼び出し、初期状態を整える
         calculateBmi();
     </script>
     </form>
