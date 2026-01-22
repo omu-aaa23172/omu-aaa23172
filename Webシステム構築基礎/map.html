@@ -48,18 +48,28 @@
                 .bindPopup('なかもずキャンパスC棟')
                 .addTo(map);
 
-            // 5. GeoJSON（大阪府の学校データ）の読み込み
-            fetch('./P29-21_27.geojson')
-                .then(res => res.json())
-                .then(json => {
-                    const osakaSchools = L.geoJSON(json)
-                        .bindPopup(layer => layer.feature.properties.P29_004);
-                    
-                    // 初期表示したい場合は .addTo(map) をつける
-                    osakaSchools.addTo(map);
-                    // コントロールに追加
-                    LayerControl.addOverlay(osakaSchools, "大阪府の学校");
-                });
+            // 5. GeoJSON（大阪府の学校データ）の読み込み（クラスタ化対応）
+			fetch('./P29-21_27.geojson')
+    			.then(res => res.json())
+    			.then(json => {
+        			// 1. クラスタグループを作成
+        			const osakaCluster = L.markerClusterGroup();
+
+        			// 2. GeoJSONレイヤーを作成（ここでは地図に追加せず、データとして作成）
+        			const osakaSchools = L.geoJSON(json, {
+            			onEachFeature: function (feature, layer) {
+                			// 各ピンにポップアップを設定
+                			layer.bindPopup(feature.properties.P29_004);
+            			}
+        			});
+
+        // 3. クラスタグループにGeoJSONレイヤーを追加
+        osakaCluster.addLayer(osakaSchools);
+        
+        // 4. クラスタグループを地図とレイヤーコントロールに追加
+        osakaCluster.addTo(map);
+        LayerControl.addOverlay(osakaCluster, "大阪府の学校（クラスタ）");
+    });
 
             // 6. 全国版（クラスタリング）の読み込み
             fetch('./P29-21.geojson')
@@ -135,4 +145,5 @@
             );
         </script>
     </body>
+
 </html>
