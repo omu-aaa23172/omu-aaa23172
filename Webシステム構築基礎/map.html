@@ -63,13 +63,13 @@
             			}
         			});
 
-        // 3. クラスタグループにGeoJSONレイヤーを追加
-        osakaCluster.addLayer(osakaSchools);
+        			// 3. クラスタグループにGeoJSONレイヤーを追加
+        			osakaCluster.addLayer(osakaSchools);
         
-        // 4. クラスタグループを地図とレイヤーコントロールに追加
-        osakaCluster.addTo(map);
-        LayerControl.addOverlay(osakaCluster, "大阪府の学校（クラスタ）");
-    });
+        			// 4. クラスタグループを地図とレイヤーコントロールに追加
+        			osakaCluster.addTo(map);
+        			LayerControl.addOverlay(osakaCluster, "大阪府の学校（クラスタ）");
+    			});
 
             // 6. 全国版（クラスタリング）の読み込み
             fetch('./P29-21.geojson')
@@ -147,3 +147,4 @@
     </body>
 
 </html>
+
